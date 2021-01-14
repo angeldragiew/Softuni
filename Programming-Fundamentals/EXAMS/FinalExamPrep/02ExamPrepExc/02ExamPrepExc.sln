@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30709.132
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02FancyBarcodes", "02FancyBarcodes\02FancyBarcodes.csproj", "{1A077CCF-9586-4BB4-AC28-33E1456F364B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03HeroesOfCodeAndLogicVII", "03HeroesOfCodeAndLogicVII\03HeroesOfCodeAndLogicVII.csproj", "{98F33613-0A29-44CF-9D5C-529176A4E7BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A077CCF-9586-4BB4-AC28-33E1456F364B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A077CCF-9586-4BB4-AC28-33E1456F364B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A077CCF-9586-4BB4-AC28-33E1456F364B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A077CCF-9586-4BB4-AC28-33E1456F364B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98F33613-0A29-44CF-9D5C-529176A4E7BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98F33613-0A29-44CF-9D5C-529176A4E7BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98F33613-0A29-44CF-9D5C-529176A4E7BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98F33613-0A29-44CF-9D5C-529176A4E7BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FA121C55-C857-4A66-A7B1-B8C570F2388A}
+	EndGlobalSection
+EndGlobal
