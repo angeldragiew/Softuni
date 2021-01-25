@@ -17,9 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "6JaggedArrayManipulator", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "7KnightGame", "7KnightGame\7KnightGame.csproj", "{A744B800-0FE5-4386-A682-E4607CD2F1B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "8Bombs", "8Bombs\8Bombs.csproj", "{2FA88B47-728B-4607-AAA7-367EB92133E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "8Bombs", "8Bombs\8Bombs.csproj", "{2FA88B47-728B-4607-AAA7-367EB92133E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "9Miner", "9Miner\9Miner.csproj", "{FC68F056-295A-4CCE-B921-1CAAD19D1A39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "9Miner", "9Miner\9Miner.csproj", "{FC68F056-295A-4CCE-B921-1CAAD19D1A39}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
