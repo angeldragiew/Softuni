@@ -45,10 +45,9 @@ namespace _07TheV_Logger
             }
 
             int counter = 2;
-            foreach (var vlogger in theVLogger.Skip(1).OrderByDescending(f => f.Value["followers"].Count).ThenBy(f => f.Value["following"].Count).ToDictionary(k => k.Key, k => k.Value))
+            foreach (var vlogger in theVLogger.Skip(1))
             {
-                Console.WriteLine($"{counter}. {vlogger.Key} : {vlogger.Value["followers"].Count} followers, {vlogger.Value["following"].Count} following");
-                counter++;
+                Console.WriteLine($"{counter++}. {vlogger.Key} : {vlogger.Value["followers"].Count} followers, {vlogger.Value["following"].Count} following");
             }
         }
     }
