@@ -64,11 +64,11 @@ namespace _08.Ranking
             }
 
             Console.WriteLine($"Best candidate is {bestCandidate} with total {maxPoints} points.");
-
-            foreach (var candidate in candidates.OrderBy(n=>n.Key))
+            Console.WriteLine("Ranking:");
+            foreach (var candidate in candidates.OrderBy(n => n.Key))
             {
                 Console.WriteLine(candidate.Key);
-                foreach (var contest in candidate.Value.OrderByDescending(p=>p.Value))
+                foreach (var contest in candidate.Value.OrderByDescending(p => p.Value))
                 {
                     Console.WriteLine($"#  {contest.Key} -> {contest.Value}");
                 }
