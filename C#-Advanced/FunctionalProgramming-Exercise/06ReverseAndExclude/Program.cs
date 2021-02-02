@@ -25,6 +25,7 @@ namespace _06ReverseAndExclude
 
             Func<int, bool> nonDivisibleBy = n => n % divisor != 0;
             numbers = numbers.Where(nonDivisibleBy).ToList();
+
             Console.WriteLine(string.Join(" ", numbers));
         }
     }
