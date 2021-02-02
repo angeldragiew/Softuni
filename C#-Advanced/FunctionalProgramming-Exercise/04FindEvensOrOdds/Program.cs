@@ -13,7 +13,7 @@ namespace _04FindEvensOrOdds
             int end = range[1];
             string condition = Console.ReadLine();
 
-            Predicate<int> filter = null;
+            Predicate<int> filter = n => true;
             if (condition == "even")
             {
                 filter = n => n % 2 == 0;

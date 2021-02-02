@@ -5,13 +5,15 @@ VisualStudioVersion = 16.0.30709.132
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01ActionPrint", "01ActionPrint\01ActionPrint.csproj", "{1DA418E9-BD6C-4E81-A2E2-ED9A4F12FF87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02KnightsOfHonor", "02KnightsOfHonor\02KnightsOfHonor.csproj", "{B6C8723D-5DCA-4DD7-8106-960B7EEEE2D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02KnightsOfHonor", "02KnightsOfHonor\02KnightsOfHonor.csproj", "{B6C8723D-5DCA-4DD7-8106-960B7EEEE2D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03CustomMinFunction", "03CustomMinFunction\03CustomMinFunction.csproj", "{E1E5D7CC-92E3-4002-A037-FA7E1351F2A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03CustomMinFunction", "03CustomMinFunction\03CustomMinFunction.csproj", "{E1E5D7CC-92E3-4002-A037-FA7E1351F2A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04FindEvensOrOdds", "04FindEvensOrOdds\04FindEvensOrOdds.csproj", "{9F5D6A45-FF32-406A-ACB0-7F2C3B00668E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04FindEvensOrOdds", "04FindEvensOrOdds\04FindEvensOrOdds.csproj", "{9F5D6A45-FF32-406A-ACB0-7F2C3B00668E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05AppliedArithmetics", "05AppliedArithmetics\05AppliedArithmetics.csproj", "{9F8985E5-7B0E-4922-86BF-929172363D17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05AppliedArithmetics", "05AppliedArithmetics\05AppliedArithmetics.csproj", "{9F8985E5-7B0E-4922-86BF-929172363D17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06ReverseAndExclude", "06ReverseAndExclude\06ReverseAndExclude.csproj", "{A1AB9B17-8C7F-441F-A88A-86DBF451A7B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{9F8985E5-7B0E-4922-86BF-929172363D17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F8985E5-7B0E-4922-86BF-929172363D17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F8985E5-7B0E-4922-86BF-929172363D17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1AB9B17-8C7F-441F-A88A-86DBF451A7B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1AB9B17-8C7F-441F-A88A-86DBF451A7B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1AB9B17-8C7F-441F-A88A-86DBF451A7B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1AB9B17-8C7F-441F-A88A-86DBF451A7B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
