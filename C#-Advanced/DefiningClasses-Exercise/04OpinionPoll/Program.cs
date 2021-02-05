@@ -21,7 +21,7 @@ namespace DefiningClasses
                 people.Add(currPerson);
             }
 
-            foreach (var person in people.Where(p=>p.Age>30).OrderBy(p=>p.Name))
+            foreach (var person in people.Where(p => p.Age > 30).OrderBy(p => p.Name))
             {
                 Console.WriteLine($"{person.Name} - {person.Age}");
             }
