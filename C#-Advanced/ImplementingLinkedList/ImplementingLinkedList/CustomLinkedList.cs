@@ -7,39 +7,39 @@ namespace ImplementingLinkedList
     class CustomLinkedList
     {
         private int count = 0;
-        private Node Head { get; set; }
-        private Node Tail { get; set; }
+        private Node head { get; set; }
+        private Node tail { get; set; }
 
         public void AddFirst(int value)
         {
             Node node = new Node(value);
             count++;
-            if (Head == null)
+            if (head == null)
             {
-                Head = node;
-                Tail = node;
+                head = node;
+                tail = node;
                 return;
             }
 
-            node.Next = Head;
-            Head.Previous = node;
-            Head = node;
+            node.Next = head;
+            head.Previous = node;
+            head = node;
         }
 
         public void AddLast(int value)
         {
             Node node = new Node(value);
             count++;
-            if (Tail == null)
+            if (tail == null)
             {
-                Tail = node;
-                Head = node;
+                tail = node;
+                head = node;
                 return;
             }
 
-            Tail.Next = node;
-            node.Previous = Tail;
-            Tail = node;
+            tail.Next = node;
+            node.Previous = tail;
+            tail = node;
         }
 
         public int RemoveFirst()
@@ -48,18 +48,20 @@ namespace ImplementingLinkedList
             {
                 throw new InvalidOperationException("List is empty");
             }
-            int removedNode = Head.Value;
-            count--;
-            if (count == 1)
-            {
-                Head = null;
-                Tail = null;
-                return removedNode;
-            }
-            Head = Head.Next;
-            Head.Previous = null;
 
-            return removedNode;
+            count--;
+            int valueToRemove = head.Value;
+            head = head.Next;
+            if (head != null)
+            {
+                head.Previous = null;
+            }
+            else
+            {
+                tail = null;
+            }
+
+            return valueToRemove;
         }
 
         public int RemoveLast()
@@ -68,23 +70,25 @@ namespace ImplementingLinkedList
             {
                 throw new InvalidOperationException("List is empty");
             }
-            count--;
-            int removedNode = Tail.Value;
-            if (count == 1)
-            {
-                Head = null;
-                Tail = null;
-                return removedNode;
-            }
-            Tail = Tail.Previous;
-            Tail.Next = null;
 
-            return removedNode;
+            count--;
+            int valueToRemove = tail.Value;
+            tail = tail.Previous;
+            if (tail != null)
+            {
+                tail.Next = null;
+            }
+            else
+            {
+                head = null;
+            }
+
+            return valueToRemove;
         }
 
         public void ForEach(Action<int> action)
         {
-            Node currNode = Head;
+            Node currNode = head;
             while (currNode != null)
             {
                 action(currNode.Value);
@@ -96,7 +100,7 @@ namespace ImplementingLinkedList
         {
             int[] arr = new int[count];
 
-            Node currNode = Head;
+            Node currNode = head;
             int index = 0;
             while (currNode != null)
             {
