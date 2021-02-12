@@ -9,7 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericBoxOfInteger", "02Ge
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03GenericSwapMethodString", "03GenericSwapMethodString\03GenericSwapMethodString.csproj", "{A3F15501-D767-4460-94A5-C17B543564AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04GenericSwapMethodInteger", "04GenericSwapMethodInteger\04GenericSwapMethodInteger.csproj", "{09ADF6FB-8E39-4FE8-A1A1-E27D512F6FDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04GenericSwapMethodInteger", "04GenericSwapMethodInteger\04GenericSwapMethodInteger.csproj", "{09ADF6FB-8E39-4FE8-A1A1-E27D512F6FDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05GenericCountMethodString", "05GenericCountMethodString\05GenericCountMethodString.csproj", "{E3E8D7C5-5B9A-4EBB-A952-85288E8CEB63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06GenericCountMethodDouble", "06GenericCountMethodDouble\06GenericCountMethodDouble.csproj", "{1CD24BDD-86FF-4102-8930-671003C22CC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07Tuple", "07Tuple\07Tuple.csproj", "{EBFA13C2-8F1A-4A2F-94FE-F4F25F7566D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +39,18 @@ Global
 		{09ADF6FB-8E39-4FE8-A1A1-E27D512F6FDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09ADF6FB-8E39-4FE8-A1A1-E27D512F6FDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09ADF6FB-8E39-4FE8-A1A1-E27D512F6FDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3E8D7C5-5B9A-4EBB-A952-85288E8CEB63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3E8D7C5-5B9A-4EBB-A952-85288E8CEB63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3E8D7C5-5B9A-4EBB-A952-85288E8CEB63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3E8D7C5-5B9A-4EBB-A952-85288E8CEB63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CD24BDD-86FF-4102-8930-671003C22CC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CD24BDD-86FF-4102-8930-671003C22CC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CD24BDD-86FF-4102-8930-671003C22CC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CD24BDD-86FF-4102-8930-671003C22CC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBFA13C2-8F1A-4A2F-94FE-F4F25F7566D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBFA13C2-8F1A-4A2F-94FE-F4F25F7566D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBFA13C2-8F1A-4A2F-94FE-F4F25F7566D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBFA13C2-8F1A-4A2F-94FE-F4F25F7566D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
