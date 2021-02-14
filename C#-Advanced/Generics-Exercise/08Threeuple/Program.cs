@@ -20,8 +20,7 @@ namespace Threeuple
             string[] secondInput = Console.ReadLine().Split();
             string secName = secondInput[0];
             int age = int.Parse(secondInput[1]);
-            bool isDrunk = false;
-            if(secondInput[2] == "drunk") { isDrunk = true; }
+            bool isDrunk = secondInput[2] == "drunk";
             CustomThreeuple<string, int, bool> secondThreeuple =
                 new CustomThreeuple<string, int, bool>(secName, age, isDrunk);
 
