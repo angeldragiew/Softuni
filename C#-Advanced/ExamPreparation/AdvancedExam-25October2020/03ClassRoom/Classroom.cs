@@ -43,7 +43,6 @@ namespace ClassroomProject
             {
                 return "No students enrolled for the subject";
             }
-
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"Subject: {subject}");
             sb.AppendLine($"Students:");
