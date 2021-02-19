@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01Cooking", "01Cooking\01Cooking.csproj", "{03AA33C4-BCFB-4654-B5CB-0E15568E4CEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01Cooking", "01Cooking\01Cooking.csproj", "{03AA33C4-BCFB-4654-B5CB-0E15568E4CEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02Selling", "02Selling\02Selling.csproj", "{DD47C1BC-BC50-48DD-A755-92422B48FD04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02Selling", "02Selling\02Selling.csproj", "{DD47C1BC-BC50-48DD-A755-92422B48FD04}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BakeryOpenning", "03Openning\BakeryOpenning.csproj", "{87DAE98B-3FDD-404B-8033-9431322C74B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{DD47C1BC-BC50-48DD-A755-92422B48FD04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD47C1BC-BC50-48DD-A755-92422B48FD04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD47C1BC-BC50-48DD-A755-92422B48FD04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87DAE98B-3FDD-404B-8033-9431322C74B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87DAE98B-3FDD-404B-8033-9431322C74B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87DAE98B-3FDD-404B-8033-9431322C74B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87DAE98B-3FDD-404B-8033-9431322C74B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
