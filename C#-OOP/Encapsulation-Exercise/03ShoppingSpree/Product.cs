@@ -20,7 +20,7 @@ namespace _03ShoppingSpree
             get { return name; }
             private set
             {
-                if (string.IsNullOrEmpty(value))
+                if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentException("Name cannot be empty");
                 }
@@ -33,9 +33,9 @@ namespace _03ShoppingSpree
             get { return cost; }
             private set
             {
-                if (value <= 0)
+                if (value < 0)
                 {
-                    throw new ArgumentException("Cost cannot be negative");
+                    throw new ArgumentException("Money cannot be negative");
                 }
                 cost = value;
             }

@@ -46,15 +46,15 @@ namespace _03ShoppingSpree
 
         public void Buy(Product product)
         {
-            if (product.Cost <= this.Money)
+            if (this.Money < product.Cost)
             {
-                bagOfProducts.Add(product);
-                Money -= product.Cost;
-                Console.WriteLine($"{Name} bought {product.Name}");
+                Console.WriteLine($"{Name} can't afford {product.Name}");
             }
             else
             {
-                Console.WriteLine($"{Name} can't afford {product.Name}");
+                Money -= product.Cost;
+                bagOfProducts.Add(product);
+                Console.WriteLine($"{Name} bought {product.Name}");
             }
         }
 

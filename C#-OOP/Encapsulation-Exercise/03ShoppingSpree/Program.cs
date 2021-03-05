@@ -10,20 +10,20 @@ namespace _03ShoppingSpree
         {
             List<Person> people = new List<Person>();
             List<Product> products = new List<Product>();
-            string[] peopleInfo = Console.ReadLine().Split(";", StringSplitOptions.RemoveEmptyEntries);
-            string[] productsInfo = Console.ReadLine().Split(";", StringSplitOptions.RemoveEmptyEntries);
+            string[] peopleInfo = Console.ReadLine().Split(";");
+            string[] productsInfo = Console.ReadLine().Split(";");
 
             try
             {
                 foreach (var item in peopleInfo)
                 {
-                    string[] personInfo = item.Split("=", StringSplitOptions.RemoveEmptyEntries);
+                    string[] personInfo = item.Split("=");
                     Person currPerson = new Person(personInfo[0], decimal.Parse(personInfo[1]));
                     people.Add(currPerson);
                 }
                 foreach (var item in productsInfo)
                 {
-                    string[] productInfo = item.Split("=", StringSplitOptions.RemoveEmptyEntries);
+                    string[] productInfo = item.Split("=");
                     Product currProduct = new Product(productInfo[0], decimal.Parse(productInfo[1]));
                     products.Add(currProduct);
                 }
