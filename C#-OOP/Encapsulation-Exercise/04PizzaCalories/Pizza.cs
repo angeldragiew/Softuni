@@ -6,6 +6,7 @@ namespace _04PizzaCalories
 {
     public class Pizza
     {
+        private const int nameMaxLength = 15;
         private string name;
         private Dough dough;
         private List<Topping> toppings;
@@ -19,9 +20,9 @@ namespace _04PizzaCalories
         public string Name
         {
             get { return name; }
-            set
+            private set
             {
-                if(string.IsNullOrWhiteSpace(value) || value.Length > 15)
+                if(string.IsNullOrWhiteSpace(value) || value.Length > nameMaxLength)
                 {
                     throw new ArgumentException("Pizza name should be between 1 and 15 symbols.");
                 }
