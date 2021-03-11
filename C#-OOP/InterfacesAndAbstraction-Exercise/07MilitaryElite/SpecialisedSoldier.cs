@@ -4,9 +4,9 @@ using System.Text;
 
 namespace _07MilitaryElite
 {
-    public class SpecialisedSoldier : Private, ISpecialisedSoldier
+    public abstract class SpecialisedSoldier : Private, ISpecialisedSoldier
     {
-        public SpecialisedSoldier(int id, string firstName, string lastName, decimal salary, string corps)
+        protected SpecialisedSoldier(int id, string firstName, string lastName, decimal salary, string corps)
             : base(id, firstName, lastName, salary)
         {
             Corps = corps;

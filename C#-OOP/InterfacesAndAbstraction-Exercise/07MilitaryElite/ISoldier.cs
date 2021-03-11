@@ -9,5 +9,6 @@ namespace _07MilitaryElite
         int Id { get; }
         string FirstName { get; }
         string LastsName { get; }
+
     } 
 }

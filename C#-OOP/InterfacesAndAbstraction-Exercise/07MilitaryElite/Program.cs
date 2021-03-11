@@ -8,7 +8,7 @@ namespace _07MilitaryElite
     {
         static void Main(string[] args)
         {
-            List<Soldier> soldiers = new List<Soldier>();
+            List<Soldier> soldiers = new List<Soldier>();            
 
             string input;
             while ((input = Console.ReadLine()) != "End")

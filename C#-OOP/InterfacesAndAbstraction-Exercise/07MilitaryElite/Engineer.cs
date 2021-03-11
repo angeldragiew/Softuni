@@ -6,13 +6,14 @@ namespace _07MilitaryElite
 {
     public class Engineer : SpecialisedSoldier, IEngineer
     {
+        private List<Repair> repairs;
         public Engineer(int id, string firstName, string lastName, decimal salary, string corps,List<Repair> repairs)
             : base(id, firstName, lastName, salary, corps)
         {
-            Repairs = repairs;
+            this.repairs = repairs;
         }
 
-        public IReadOnlyCollection<Repair> Repairs { get; private set; }
+        public IReadOnlyCollection<Repair> Repairs=>this.repairs.AsReadOnly();
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace _07MilitaryElite
 {
-    interface ILieutenantGeneral
+    public interface ILieutenantGeneral : IPrivate
     {
         IReadOnlyCollection<Private> SetOfPrivates { get; }
     }

@@ -6,13 +6,14 @@ namespace _07MilitaryElite
 {
     public class Commando : SpecialisedSoldier,ICommando
     {
+        private List<Mission> missions;
         public Commando(int id, string firstName, string lastName, decimal salary, string corps, List<Mission> missions)
             : base(id, firstName, lastName, salary, corps)
         {
-            Missions = missions;
+            this.missions = missions;
         }
 
-        public IReadOnlyCollection<Mission> Missions { get; private set; }
+        public IReadOnlyCollection<Mission> Missions => this.missions.AsReadOnly();
 
         public override string ToString()
         {

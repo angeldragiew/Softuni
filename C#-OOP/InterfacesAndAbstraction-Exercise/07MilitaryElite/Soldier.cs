@@ -6,7 +6,7 @@ namespace _07MilitaryElite
 {
     public abstract class Soldier : ISoldier
     {
-        public Soldier(int id, string firstName, string lastName)
+        protected Soldier(int id, string firstName, string lastName)
         {
             Id = id;
             FirstName = firstName;

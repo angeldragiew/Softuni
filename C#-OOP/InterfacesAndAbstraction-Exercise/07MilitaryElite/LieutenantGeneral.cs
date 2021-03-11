@@ -6,12 +6,13 @@ namespace _07MilitaryElite
 {
     public class LieutenantGeneral : Private, ILieutenantGeneral
     {
+        private List<Private> setOfPrivates;
         public LieutenantGeneral(int id, string firstName, string lastName, decimal salary, List<Private> privates)
             :base(id, firstName, lastName, salary)
         {
-            SetOfPrivates = privates;
+            this.setOfPrivates = privates;
         }
-        public IReadOnlyCollection<Private> SetOfPrivates { get; private set; }
+        public IReadOnlyCollection<Private> SetOfPrivates => this.setOfPrivates.AsReadOnly();
 
         public override string ToString()
         {

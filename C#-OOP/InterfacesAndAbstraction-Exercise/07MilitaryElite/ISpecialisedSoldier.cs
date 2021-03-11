@@ -4,8 +4,8 @@ using System.Text;
 
 namespace _07MilitaryElite
 {
-    public interface ISpecialisedSoldier
+    public interface ISpecialisedSoldier : IPrivate
     {
-        string Corps { get;  }
+        string Corps { get; }
     }
 }
