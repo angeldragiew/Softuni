@@ -160,41 +160,243 @@ namespace Chainblock.Tests
             chainblock.Add(failedTransaction);
             chainblock.Add(unauthorizedTransaction);
 
-            Assert.Throws<InvalidOperationException>(()=>chainblock.GetByTransactionStatus(TransactionStatus.Aborted));
+            Assert.Throws<InvalidOperationException>(() => chainblock.GetByTransactionStatus(TransactionStatus.Aborted));
         }
 
         [Test]
         public void GetByTransactionStatus_ReturnsTransactionsWithThatStatus_OrderedDescendingByAmount()
         {
-            List<ITransaction> expected = new List<ITransaction>();
+            CreateHundredTransactions();
 
-            for (int i = 1; i < 100; i++)
+            TransactionStatus searchedStatus = TransactionStatus.Successfull;
+            List<ITransaction> expected = chainblock.Where(t => t.Status == searchedStatus).OrderByDescending(t => t.Amount).ToList();
+            List<ITransaction> actual = chainblock.GetByTransactionStatus(searchedStatus).ToList();
+            Assert.That(expected, Is.EquivalentTo(actual));
+        }
+
+        [Test]
+        public void GetAllSendersWithTransactionStatusThrows_When_ThereAreNotSendersWithThatStatus()
+        {
+            ITransaction firstTransaction = new Transaction(1, "Angel", "Receiver1", 5);
+            firstTransaction.Status = TransactionStatus.Successfull;
+            ITransaction secondTransaction = new Transaction(2, "Ivan", "Receiver2", 6);
+            secondTransaction.Status = TransactionStatus.Failed;
+
+            Assert.Throws<InvalidOperationException>(() => chainblock.GetAllSendersWithTransactionStatus(TransactionStatus.Aborted));
+        }
+
+        [Test]
+        public void GetAllSendersWithTransactionStatus_ReturnsAllSendersSortedByAmount_WhenThereAreSendersWithThatStatus()
+        {
+            CreateHundredTransactions();
+
+            TransactionStatus searchedStatus = TransactionStatus.Successfull;
+            List<string> expectedSenderNames = chainblock
+                .Where(t => t.Status == searchedStatus)
+                .OrderBy(t => t.Amount)
+                .Select(t => t.From)
+                .ToList();
+
+            List<string> actualSenderNames = chainblock.GetAllSendersWithTransactionStatus(searchedStatus).ToList();
+
+            Assert.That(expectedSenderNames, Is.EquivalentTo(actualSenderNames));
+        }
+
+        [Test]
+        public void GetAllReceiversWithTransactionStatusThrows_When_ThereAreNotReceiversWithThatStatus()
+        {
+            ITransaction firstTransaction = new Transaction(1, "Angel", "Receiver1", 5);
+            firstTransaction.Status = TransactionStatus.Successfull;
+            ITransaction secondTransaction = new Transaction(2, "Ivan", "Receiver2", 6);
+            secondTransaction.Status = TransactionStatus.Failed;
+
+            Assert.Throws<InvalidOperationException>(() => chainblock.GetAllReceiversWithTransactionStatus(TransactionStatus.Aborted));
+        }
+
+
+        [Test]
+        public void GetAllReceiversWithTransactionStatus_ReturnsAllReceiversSortedByAmount_WhenThereAreReceiversWithThatStatus()
+        {
+            CreateHundredTransactions();
+
+            TransactionStatus searchedStatus = TransactionStatus.Successfull;
+            List<string> expectedReceiversNames = chainblock
+                .Where(t => t.Status == searchedStatus)
+                .OrderBy(t => t.Amount)
+                .Select(t => t.To)
+                .ToList();
+
+            List<string> actualReceiversNames = chainblock.GetAllReceiversWithTransactionStatus(searchedStatus).ToList();
+
+            Assert.That(expectedReceiversNames, Is.EquivalentTo(actualReceiversNames));
+        }
+
+        [Test]
+        public void GetAllOrderedByAmountDescendingThenById_ReturnsAllTranstactionsOrdered()
+        {
+            CreateHundredTransactions();
+
+            List<ITransaction> expected = chainblock
+                .OrderByDescending(t => t.Amount)
+                .ThenBy(t => t.Id)
+                .ToList();
+
+            List<ITransaction> actual = chainblock.GetAllOrderedByAmountDescendingThenById().ToList();
+
+            Assert.That(actual, Is.EquivalentTo(expected));
+        }
+
+        [Test]
+        public void GetBySenderOrderedByAmountDescendingThrows_When_SenderDoesntExists()
+        {
+            CreateHundredTransactions();
+            Assert.Throws<InvalidOperationException>(() => chainblock.GetBySenderOrderedByAmountDescending("NonExistentSender"));
+        }
+
+        [Test]
+        public void GetBySenderOrderedByAmountDescending_ReturnsTransactionsFilteredAndOrdered_When_SenderExists()
+        {
+            CreateHundredTransactions();
+
+            string sender = chainblock.FirstOrDefault().From;
+            List<ITransaction> expected = chainblock
+                .Where(t => t.From == sender)
+                .OrderByDescending(t => t.Amount)
+                .ToList();
+
+            List<ITransaction> actual = chainblock.GetBySenderOrderedByAmountDescending(sender).ToList();
+
+            Assert.That(actual, Is.EquivalentTo(expected));
+
+        }
+
+        [Test]
+        public void GetByReceiverOrderedByAmountThenByIdThrows_When_ReceiverDoesntExists()
+        {
+            CreateHundredTransactions();
+            Assert.Throws<InvalidOperationException>(() => chainblock.GetByReceiverOrderedByAmountThenById("NonExistentReceiver"));
+        }
+
+        [Test]
+        public void GetByReceiverOrderedByAmountThenById_ReturnsTransactionsFilteredAndOrdered_When_ReceiverExists()
+        {
+            CreateHundredTransactions();
+
+            string receiver = chainblock.FirstOrDefault().To;
+            List<ITransaction> expected = chainblock
+                .Where(t => t.To == receiver)
+                .OrderByDescending(t => t.Amount)
+                .ThenBy(t=>t.Id)
+                .ToList();
+
+            List<ITransaction> actual = chainblock.GetByReceiverOrderedByAmountThenById(receiver).ToList();
+
+            Assert.That(actual, Is.EquivalentTo(expected));
+
+        }
+
+        [Test]
+        public void GetByTransactionStatusAndMaximumAmount_ReturnsEmptyCollection_WhenConditionsAreNotMet()
+        {
+            ITransaction firstTransaction = new Transaction(1, "a", "b", 110);
+            firstTransaction.Status = TransactionStatus.Aborted;
+            ITransaction secondTransaction = new Transaction(2, "a", "b", 140);
+            secondTransaction.Status = TransactionStatus.Failed;
+            ITransaction thridTransaction = new Transaction(3, "a", "b", 140);
+            thridTransaction.Status = TransactionStatus.Unauthorized;
+
+
+            List<ITransaction> actual = chainblock.GetByTransactionStatusAndMaximumAmount(TransactionStatus.Failed, 120).ToList();
+
+            Assert.That(actual, Is.EquivalentTo(new List<ITransaction>()));
+        }
+
+        [Test]
+        public void GetByTransactionStatusAndMaximumAmount_ReturnsFilteredCollectionOfTransactions_WhenConditionsAreMet()
+        {
+            CreateHundredTransactions();
+
+            TransactionStatus status = TransactionStatus.Failed;
+            double amount = 120;
+            List<ITransaction> expected = chainblock
+                .Where(t => t.Status == status && t.Amount <= amount)
+                .OrderByDescending(t => t.Amount)
+                .ToList();
+
+            List<ITransaction> actual = chainblock.GetByTransactionStatusAndMaximumAmount(status, amount).ToList();
+
+            Assert.That(expected, Is.EquivalentTo(actual));
+        }
+
+        [Test]
+        public void GetBySenderAndMinimumAmountDescendingThrows_When_ThereAreNotTransactionsThatMeetCondition()
+        {
+            ITransaction firstTransaction = new Transaction(1, "Ivan", "b", 100);
+            firstTransaction.Status = TransactionStatus.Aborted;
+            ITransaction secondTransaction = new Transaction(2, "Petko", "b", 120);
+            secondTransaction.Status = TransactionStatus.Failed;
+            ITransaction thridTransaction = new Transaction(3, "Petar", "b", 100);
+            thridTransaction.Status = TransactionStatus.Unauthorized;
+
+            double minAmount = 110;
+            string sender = "Angel";
+
+            Assert.Throws<InvalidOperationException>(()=>chainblock.GetBySenderAndMinimumAmountDescending(sender, minAmount));
+        }
+
+        [Test]
+        public void GetBySenderAndMinimumAmountDescending()
+        {
+            CreateHundredTransactions();
+
+            string sender = "Ivan";
+            double minAmount = 110;
+
+            List<ITransaction> expected = chainblock
+                .Where(t => t.From == sender && t.Amount > minAmount)
+                .OrderByDescending(t=>t.Amount)
+                .ToList();
+
+            List<ITransaction> actual = chainblock.GetBySenderAndMinimumAmountDescending(sender, minAmount).ToList();
+
+            Assert.That(expected, Is.EquivalentTo(actual));
+        }
+
+
+        private void CreateHundredTransactions()
+        {
+            int n = 100;
+            for (int i = 1; i < n; i++)
             {
                 TransactionStatus status = TransactionStatus.Aborted;
+                string from = "Ivan";
+                string to = "Galq";
                 if (i % 2 == 0)
                 {
                     status = TransactionStatus.Successfull;
+                    from = "Petar";
+                    to = "Qna";
                 }
                 if (i % 3 == 0)
                 {
                     status = TransactionStatus.Failed;
+                    from = "Angel";
+                    to = "Petq";
                 }
                 if (i % 5 == 0)
                 {
+                    from = "Stefan";
+                    to = "Jana";
                     status = TransactionStatus.Unauthorized;
                 }
 
-                ITransaction currTransaction = new Transaction(i, $"Sender{i}", "Receiver", 100 + i);
+                double amount = i % 2 == 0 ? 100 : 100 + i;
+
+                ITransaction currTransaction = new Transaction(n - i, from, to, amount);
                 currTransaction.Status = status;
 
                 chainblock.Add(currTransaction);
-                expected.Add(currTransaction);
             }
-
-            TransactionStatus searchedStatus = TransactionStatus.Successfull;
-            expected = expected.Where(t => t.Status == searchedStatus).OrderByDescending(t => t.Amount).ToList();
-            List<ITransaction> actual = chainblock.GetByTransactionStatus(searchedStatus).ToList();
-            Assert.That(expected, Is.EquivalentTo(actual));
         }
     }
 }

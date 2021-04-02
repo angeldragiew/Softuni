@@ -66,22 +66,47 @@ namespace Chainblock
 
         public IEnumerable<ITransaction> GetAllOrderedByAmountDescendingThenById()
         {
-            throw new NotImplementedException();
+            List<ITransaction> result = transactionsById
+                .Values
+                .OrderByDescending(t => t.Amount)
+                .ThenBy(t => t.Id)
+                .ToList();
+            return result;
         }
 
         public IEnumerable<string> GetAllReceiversWithTransactionStatus(TransactionStatus status)
         {
-            throw new NotImplementedException();
+            List<string> result = transactionsById
+                .Values
+                .Where(t => t.Status == status)
+                .OrderBy(t => t.Amount)
+                .Select(t => t.To)
+                .ToList();
+            if (result.Count == 0)
+            {
+                throw new InvalidOperationException($"There are not receivers with transaction status {status}");
+            }
+            return result;
         }
 
         public IEnumerable<string> GetAllSendersWithTransactionStatus(TransactionStatus status)
         {
-            throw new NotImplementedException();
+            List<string> result = transactionsById.
+                Values.
+                Where(t => t.Status == status)
+                .OrderBy(t => t.Amount)
+                .Select(t => t.From)
+                .ToList();
+            if (result.Count == 0)
+            {
+                throw new InvalidOperationException($"There are not senders with transaction status {status}");
+            }
+            return result;
         }
 
         public ITransaction GetById(int id)
         {
-            if(transactionsById.ContainsKey(id) == false)
+            if (transactionsById.ContainsKey(id) == false)
             {
                 throw new InvalidOperationException($"Transaction with id {id} does not exist");
             }
@@ -95,17 +120,50 @@ namespace Chainblock
 
         public IEnumerable<ITransaction> GetByReceiverOrderedByAmountThenById(string receiver)
         {
-            throw new NotImplementedException();
+            List<ITransaction> result = transactionsById
+                .Values
+                .Where(t => t.To == receiver)
+                .OrderByDescending(t => t.Amount)
+                .ThenBy(t => t.Id)
+                .ToList();
+
+            if (result.Count == 0)
+            {
+                throw new InvalidOperationException($"There are not transactions with receiver name: {receiver}");
+            }
+
+            return result;
         }
 
         public IEnumerable<ITransaction> GetBySenderAndMinimumAmountDescending(string sender, double amount)
         {
-            throw new NotImplementedException();
+            List<ITransaction> result = transactionsById
+                .Values
+                .Where(t => t.From == sender && t.Amount > amount)
+                .OrderByDescending(t => t.Amount)
+                .ToList();
+
+            if (result.Count == 0)
+            {
+                throw new InvalidOperationException();
+            }
+
+            return result;
         }
 
         public IEnumerable<ITransaction> GetBySenderOrderedByAmountDescending(string sender)
         {
-            throw new NotImplementedException();
+            List<ITransaction> result = transactionsById
+                .Values
+                .Where(t => t.From == sender)
+                .OrderByDescending(t => t.Amount)
+                .ToList();
+
+            if (result.Count == 0)
+            {
+                throw new InvalidOperationException($"There are not transactions with sender name: {sender}");
+            }
+            return result;
         }
 
         public IEnumerable<ITransaction> GetByTransactionStatus(TransactionStatus status)
@@ -120,13 +178,16 @@ namespace Chainblock
 
         public IEnumerable<ITransaction> GetByTransactionStatusAndMaximumAmount(TransactionStatus status, double amount)
         {
-            throw new NotImplementedException();
+            return transactionsById
+                .Values
+                .Where(t => t.Status == status && t.Amount <= amount)
+                .OrderByDescending(t => t.Amount);
         }
 
 
         public void RemoveTransactionById(int id)
         {
-            if(transactionsById.ContainsKey(id) == false)
+            if (transactionsById.ContainsKey(id) == false)
             {
                 throw new InvalidOperationException($"Transaction with id {id} does not exist");
             }
