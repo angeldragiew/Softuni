@@ -37,7 +37,7 @@ namespace EasterRaces.Models.Races.Entities
         public int Laps
         {
             get { return laps; }
-            set
+            private set
             {
                 if (value < 1)
                 {
