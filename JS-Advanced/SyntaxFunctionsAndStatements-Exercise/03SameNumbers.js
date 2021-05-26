@@ -1,5 +1,5 @@
 function solve(number) {
-    let numbersArray = String(number).split('').map(x=>+x);
+    let numbersArray = String(number).split('').map(x => +x);
 
     let areSame = true;
     for (let i = 0; i < numbersArray.length - 1; i++) {
