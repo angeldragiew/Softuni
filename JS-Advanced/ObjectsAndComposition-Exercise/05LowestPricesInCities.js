@@ -11,8 +11,6 @@ function solve(input) {
         }
     }
 
-
-
     for (const el in products) {
         let townName = '';
         let lowestPrice = Number.MAX_SAFE_INTEGER;
