@@ -1,2 +1,9 @@
 bin
 obj
+/JS-Apps/ClientSideRenderingЕxercise/node_modules
+/JS-Apps/ModularApplications-Exercise/01.Team-Manager/node_modules
+/JS-Apps/Routing-Еxercise/01.Furniture/node_modules
+/JS-Advanced/UnitTestingAndErrorHandling-Exercise/node_modules
+/JS-Advanced/UnitTestingAndErrorHandling-Lab/node_modules
+/JS-Advanced/Exams/JsAdvancedExam/node_modules
+/JS-Advanced/Exams/JSAdvanced-ExamPrep1-12.02.2021/node_modules
